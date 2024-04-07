@@ -20,23 +20,27 @@ export const router = createBrowserRouter([
     // loader: rootLoader,
     children: [
       {
-        path: "home",
+        path: "/",
         element: <Home />,
         // loader: teamLoader,
+        exact: true,
       },
       {
         path: "about",
         element: <About />,
+        // exact: true,
         // loader: teamLoader,
       },
       {
         path: "blogs",
         element: <Blogs />,
+        // exact: true,
         // loader: teamLoader,
       },
       {
         path: "prompts",
         element: <Prompts />,
+        // exact: true,
         // loader: teamLoader,
       },
     ],

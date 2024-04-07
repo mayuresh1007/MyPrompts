@@ -1,22 +1,23 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
+import "./Navbar.css";
 
 const NavBar = () => {
+  const location = useLocation();
+  const currentPath = location.pathname;
+  console.log(currentPath);
+
   return (
     <div className="items-center text-center justify-center">
       <header className="text-gray-600 body-font">
         <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <a className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-            {/* <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" className="w-10 h-10 text-white p-2 bg-violet-500 rounded-full" viewBox="0 0 24 24">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-        </svg> */}
-
+          <span className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="2em"
               height="2em"
               viewBox="0 0 20 20"
-            //   color="darkviolet"
+              //   color="darkviolet"
               className="text-violet-600 items-ceter justify-center"
             >
               <path
@@ -25,27 +26,52 @@ const NavBar = () => {
               ></path>
             </svg>
 
-            <Link
-              to="/Home"
-              className="ml-1 text-xl text-violet-600 hover:text-violet-400"
+            
+            <NavLink
+              to="/"
+              className="ml-1 text-xl text-violet-600 "
             >
-              MyPrompt{" "}
-            </Link>
-          </a>
+              MyPrompt
+            </NavLink>
+          </span>
           <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
-            <Link to="/Home" className="mr-5 hover:text-violet-700">
-              Home{" "}
-            </Link>
-            <Link to="/Blogs" className="mr-5 hover:text-violet-700">
+            <NavLink
+              to="/"
+              className={`mr-5 hover:text-violet-700 ${
+                currentPath === "/" ? "active" : ""
+              }`}
+            >
+              Home
+            </NavLink>
+
+            <NavLink
+              to="/blogs"
+              className={`mr-5 hover:text-violet-700 ${
+                currentPath === "/blogs" ? "active" : ""
+              }`}
+            >
               Blogs{" "}
-            </Link>
-            <Link to="/Prompts" className="mr-5 hover:text-violet-700">
-              Prompts{" "}
-            </Link>
-            <Link to="/About" className="mr-5 hover:text-violet-700">
-              About{" "}
-            </Link>
+            </NavLink>
+
+            <NavLink
+              to="/prompts"
+              className={`mr-5 hover:text-violet-700 ${
+                currentPath === "/prompts" ? "active" : ""
+              }`}
+            >
+              Prompts
+            </NavLink>
+
+            <NavLink
+              to="/about"
+              className={`mr-5 hover:text-violet-700 ${
+                currentPath === "/about" ? "active" : ""
+              }`}
+            >
+              About
+            </NavLink>
           </nav>
+
           <button className="inline-flex items-center text-center justify-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-violet-300 hover:text-black rounded text-base mt-4 md:mt-0">
             Buy a coffee{" "}
             <svg
