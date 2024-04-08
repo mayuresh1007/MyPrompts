@@ -1,8 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import "./Promptform.css";
+import promptCategories from "../utils/containt";
 
-const PromptForm = () => {
+const ButtonsContainer = ({ onSelectCategory }) => {
+  const handleCategoryButton = (text) => {
+    onSelectCategory(text); // Pass the selected category to the parent component
+  };
+
+  return (
+    <div className="flex flex-wrap justify-center">
+      {Array.isArray(promptCategories) &&
+        promptCategories.map((prompt, i) => (
+          <div
+            className="border border-violet-500 rounded-full mx-1 my-1 px-3 pt-1 pb-2  text-center text-sm text-gray-800 bg-gray-100 hover:bg-gray-200 transition duration-300 ease-in-out"
+            key={i}
+            onClick={() => handleCategoryButton(prompt.category)}
+          >
+            <span>{prompt.category}</span>
+          </div>
+        ))}
+    </div>
+  );
+};
+
+const PromptForm = ({ selectedCategory }) => {
   const {
     register,
     handleSubmit,
@@ -12,44 +34,48 @@ const PromptForm = () => {
 
   const onSubmit = (data) => alert(JSON.stringify(data));
 
-  console.log(watch("mainPropmt")); // watch input value by passing the name of it
-
   return (
-    <div className="container mx-auto pt-10">
-      {/* /* "handleSubmit" will validate your inputs before invoking "onSubmit" / */}
+    <div className="container mx-auto pt-2">
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col space-y-4"
+        className="grid grid-flow-row space-y-2 justify-center mt-5"
       >
-        {/* register your input into the hook by invoking the "register" function */}
-        {/* <input
-          defaultValue=""
-          placeholder="category"
-          {...register("example")}
-          className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-violet-500"
-        /> */}
-        {/* Category Bar */}
-
-        {/* include validation with required or other standard HTML validation rules */}
+        {/* Set the default value of the input field to the selected category */}
         <input
           type="text"
-          placeholder="enter your thought"
-          {...register("mainPropmt", { required: true })}
-          className="border border-gray-300 rounded-md px-4 py-2 focus:outline-none focus:border-violet-500"
+          placeholder="Type your thought"
+          {...register("mainPropmt", { required: true },watch)}
+          defaultValue={selectedCategory} // Set the default value to the selected category
+          // onChange={selectedCategory}
+          className="border border-gray-500 rounded-md px-4 py-2 focus:outline-violet-500 lg:w-[500px] w-full"
         />
-        {/* errors will return when field validation fails  */}
         {errors.mainPropmt && (
-          <span className="text-red-500">please enter your idea</span>
+          <span className="text-red-500 pt-0 mt-0">please enter your text</span>
         )}
 
         <input
           type="submit"
           value="Submit"
-          className="bg-violet-500 text-white rounded-md px-4 py-2 hover:bg-violet-600 cursor-pointer w-52 text-center"
+          className="bg-violet-500 text-white rounded-md px-4 py-2 hover:bg-violet-600 cursor-pointer justify-center items-center  lg:w-40 w-24 mx-auto"
         />
       </form>
     </div>
   );
 };
 
-export default PromptForm;
+const PromptFormContainer = () => {
+  const [selectedCategory, setSelectedCategory] = useState(""); // State to hold the selected category
+  // Callback function to receive the selected category from ButtonsContainer
+  const handleCategorySelection = (category) => {
+    setSelectedCategory(category); // Update the selected category in the state
+  };
+
+  return (
+    <div className="container mx-auto pt-8">
+      <ButtonsContainer onSelectCategory={handleCategorySelection} />
+      <PromptForm selectedCategory={selectedCategory} />
+    </div>
+  );
+};
+
+export default PromptFormContainer;

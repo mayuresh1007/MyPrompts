@@ -72,7 +72,7 @@ const NavBar = () => {
             </NavLink>
           </nav>
 
-          <button className="inline-flex items-center text-center justify-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-violet-300 hover:text-black rounded text-base mt-4 md:mt-0">
+          <button className="inline-flex items-center text-center justify-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-violet-500 hover:text-white rounded text-base mt-4 md:mt-0">
             Buy a coffee{" "}
             <svg
               xmlns="http://www.w3.org/2000/svg"

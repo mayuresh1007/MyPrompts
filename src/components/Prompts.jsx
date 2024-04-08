@@ -1,11 +1,12 @@
 import React from "react";
-import PromptForm from "./PromptForm";
+import PromptFormContainer from "./PromptForm";
 
 const Prompts = () => {
   return (
     <div>
-      <PromptForm />
-      <section className="text-gray-600 body-font">
+      <div className="mt-8">
+      <PromptFormContainer /></div>
+      {/* <section className="text-gray-600 body-font">
         <div className="container px-5 py-24 mx-auto">
           <div className="flex flex-col text-center w-full mb-20">
             <h2 className="text-xs text-violet-500 tracking-widest font-medium title-font mb-1">
@@ -147,7 +148,7 @@ const Prompts = () => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 };
