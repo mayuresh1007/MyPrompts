@@ -1,0 +1,37 @@
+/* Define a variable for random color */
+:root {
+    --random-color: rgb(
+      /* Generate random RGB values */
+      calc(var(--random-r) * 255),
+      calc(var(--random-g) * 255),
+      calc(var(--random-b) * 255)
+    );
+  }
+  
+  /* Generate random RGB values */
+  @keyframes randomColors {
+    0% {
+      --random-r: Math.random();
+      --random-g: Math.random();
+      --random-b: Math.random();
+    }
+    100% {
+      --random-r: Math.random();
+      --random-g: Math.random();
+      --random-b: Math.random();
+    }
+  }
+  
+  /* Apply random color gradient to text input */
+  input[type="text"] {
+    /* Start the animation */
+    /* animation: randomColors 5s infinite; */
+    /* Apply linear gradient using random color */
+    color: var(--random-color);
+    /* background-image: linear-gradient(to right, var(--random-color) 0%, transparent 100%); */
+    /* Other input styles */
+    /* border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px; */
+    background-size: 100%;
+  }

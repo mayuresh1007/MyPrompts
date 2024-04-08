@@ -1,18 +1,36 @@
 import React from "react";
+import Typed from 'typed.js';
 
 const About = () => {
+  const el = React.useRef(null);
+
+  React.useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: ['<i>web developer</i>', '<i>React developer</i>'],
+      typeSpeed: 80,
+      // shuffle: true,
+      smartBackspace: true,
+      loop: true,
+      loopCount: Infinity,
+    });
+
+    return () => {
+      // Destroy Typed instance during cleanup to stop animation
+      typed.destroy();
+    };
+  }, []);
   return (
     <div>
       <section className="text-gray-600 body-font">
-        <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
+        <div className="container mx-auto flex px-5 py-2 items-center justify-center flex-col">
           <img
             className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
             alt="hero"
             src="https://avatars.githubusercontent.com/u/77499509?v=4"
           />
           <div className="text-center lg:w-2/3 w-full">
-            <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">
-              Mayuresh Kumbhar. web developer
+            <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-violet-600">
+              Mayuresh Kumbhar.  <br /> <span ref={el} className="text-red-400" />
             </h1>
             <p className="mb-8 leading-relaxed">
               About Mayuresh Welcome to codewithmayuresh.in, your gateway to

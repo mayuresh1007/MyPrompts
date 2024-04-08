@@ -37,7 +37,7 @@ const NavBar = () => {
           <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
             <NavLink
               to="/"
-              className={`mr-5 hover:text-violet-700 ${
+              className={`font-semibold mr-5 hover:text-violet-700 ${
                 currentPath === "/" ? "active" : ""
               }`}
             >
@@ -46,7 +46,7 @@ const NavBar = () => {
 
             <NavLink
               to="/blogs"
-              className={`mr-5 hover:text-violet-700 ${
+              className={`font-semibold mr-5 hover:text-violet-700 ${
                 currentPath === "/blogs" ? "active" : ""
               }`}
             >
@@ -55,7 +55,7 @@ const NavBar = () => {
 
             <NavLink
               to="/prompts"
-              className={`mr-5 hover:text-violet-700 ${
+              className={`font-semibold mr-5 hover:text-violet-700 ${
                 currentPath === "/prompts" ? "active" : ""
               }`}
             >
@@ -64,7 +64,7 @@ const NavBar = () => {
 
             <NavLink
               to="/about"
-              className={`mr-5 hover:text-violet-700 ${
+              className={`font-semibold mr-5 hover:text-violet-700 ${
                 currentPath === "/about" ? "active" : ""
               }`}
             >

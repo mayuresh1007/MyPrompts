@@ -7,6 +7,7 @@ import About from './components/About.jsx';
 import Blogs from './components/Blogs.jsx';
 import Prompts from './components/Prompts.jsx';
 import Home from './components/Home.jsx';
+import PageNotFound from './components/PageNotFound.jsx';
 
 // ReactDOM.createRoot(document.getElementById('root')).render(
 //   <React.StrictMode>
@@ -18,6 +19,7 @@ export const router = createBrowserRouter([
     path: "/",
     element: <App />,
     // loader: rootLoader,
+    errorElement:<PageNotFound/>,
     children: [
       {
         path: "/",
